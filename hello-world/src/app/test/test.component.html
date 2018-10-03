@@ -1,0 +1,16 @@
+
+  Hello {{name}}
+<input type="text" value="test" [id]=id [disabled]="isDisabled ? true : false">
+<button (click)="onclick()">Greet</button>
+{{greet}}
+  <input [(ngModel)]="logging" #myLog type="text" value="log text">
+  <button (click)="log(myLog.value)">Log</button>
+  {{logging}}
+
+  <div *ngFor="let color of colors">
+    <h2>{{color}}</h2>
+  </div>
+
+  <h2>Hello {{parentData}}</h2>
+
+  <button (click)="fireEvent()">Fire Event</button>
