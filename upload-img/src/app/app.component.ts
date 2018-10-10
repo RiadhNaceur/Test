@@ -9,20 +9,22 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'upload-img';
   selectedFile: File = null;
+  options;
   constructor(private http: HttpClient){
 
   }
 
   onSelected(event){
    this.selectedFile = <File> event.target.files[0];
-   console.log(this.selectedFile);
+    console.log(<File> event.target.files[0]);
   }
   onUpload(){
     const fd = new FormData();
-    fd.append('image', this.selectedFile);
+    fd.append('image', this.selectedFile , this.selectedFile.name);
+    this.options = { content: fd };
     //fd.append('test', 'this is a test');
-            this.http.post('http://juridique.positiftunisie.com/public/user/addws', fd, {responseType: 'json'})
-      .subscribe((response: any) =>{
+    this.http.post('http://juridique.positiftunisie.com/public/user/addws', fd, this.options)
+    .subscribe((response: any) =>{
         console.log(response);
       });
   }
