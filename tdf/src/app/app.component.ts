@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './user';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,10 @@ export class AppComponent {
   title = 'tdf';
 
   topics = ['Angular', 'React', 'Vue'];
+
+  userModel = new User('Rob','rob@test.com',1114445522,'','morning',true);
+
+  onSubmit(){
+    console.log(this.userModel);
+  }
 }
