@@ -7,7 +7,8 @@ import { CreateUpdateComponent } from './components/create-update/create-update.
 import { ListComponent } from './components/list/list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {UserService} from './shared/user.service';
-import {FormsModule} from '@angular/forms';
+//import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 const appRoutes:Routes=[
   {path: '', component: ListComponent},
   {path: 'createUpdate', component: CreateUpdateComponent}
@@ -24,7 +25,7 @@ const appRoutes:Routes=[
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

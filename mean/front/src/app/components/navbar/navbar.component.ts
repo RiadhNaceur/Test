@@ -14,11 +14,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-  /*addUser(event: any){
+  addUser(event: any){
     event.preventDefault();
     this.userService.setter(new User);
     this.router.navigate(['/createUpdate']);
 
-  }*/
+  }
 
 }
