@@ -1,5 +1,8 @@
 
 <div class="container mb-5">
+  <div class="alert alert-danger" *ngIf="errorMsg">
+    {{errorMsg}}
+  </div>
   <h1>Forms</h1>
   <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
     {{userForm.value | json}}
@@ -46,6 +49,8 @@
         <label class="form-check-label">Subscribe</label>
       </div>
 
-       <button class="btn btn-primary" type="submit">Submit</button>
+       <button *ngIf="!submitted" class="btn btn-primary" type="submit" >Submit</button>
+       <small *ngIf="submitted" >Demande envoyée avec succée. </small>
+       
   </form>
 </div>

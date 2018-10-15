@@ -1,0 +1,17 @@
+{{user | json}}
+
+<form (ngSubmit)=createUpdate()>
+  <div class="form-group">
+    <label for="_id">ID</label>
+    <input type="text" name="_id" [(ngModel)]="user._id" class="form-control">
+  </div>
+  <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" [(ngModel)]="user.name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" name="lastname" [(ngModel)]="user.lastname" class="form-control">
+      </div>
+      <input type="submit" value="Submit" class="btn btn-success">
+</form>
