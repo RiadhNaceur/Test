@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute } from '@angular/router';
 import {UserService} from '../../shared/user.service';
 import {User} from '../../user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {first} from "rxjs/operators";
-
 
 
 @Component({
@@ -13,27 +12,34 @@ import {first} from "rxjs/operators";
   styleUrls: ['./create-update.component.css']
 })
 export class CreateUpdateComponent implements OnInit {
-  //user: User;
   registrationForm: FormGroup;
-  constructor(private router: Router, private userService: UserService, private fb: FormBuilder) { }
+  constructor(private router: Router, private userService: UserService, private fb: FormBuilder, private route: ActivatedRoute ) { }
   get userName(){
     return this.registrationForm.get('name');
   }
-
+  id;
   ngOnInit() {
-   //this.user = this.userService.getter();
    this.registrationForm = this.fb.group({
     _id: [''],
     name: ['', [Validators.required, Validators.minLength(3)]],
     lastname: ['']
 });
-this.userService.getUserById(+userId)
-      .subscribe( data => {
-        this.editForm.setValue(data);
-      });
-  }
+
+this.route.params.subscribe(params => {
+  this.id = params['id'];
+  if (this.id != 0){
+
+    this.userService.getUserById<User>(this.id)
+          .subscribe( data => {
+            console.log('daata'+JSON.stringify(data));
+            this.registrationForm.patchValue(data);
+          });
+      }
+});
+
+}
   createUpdate(){
-    if (this.registrationForm.get('_id')){
+    if (this.id !=0){
       this.userService.updateUser(this.registrationForm.value).pipe(first()).subscribe(
         data=>{
           console.log(data);
@@ -53,9 +59,6 @@ this.userService.getUserById(+userId)
         console.log(error);
       }
     )
-    //}
   }
-
-
 }
 }

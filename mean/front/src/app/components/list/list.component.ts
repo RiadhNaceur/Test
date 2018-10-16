@@ -29,7 +29,8 @@ readUsers(){
 
 update(user){
 this.userService.setter(user);
-this.router.navigate(['/createUpdate']);
+localStorage.setItem('usrid',user._id);
+this.router.navigate(['/createUpdate/'+user._id]);
 }
 
 delete(user){

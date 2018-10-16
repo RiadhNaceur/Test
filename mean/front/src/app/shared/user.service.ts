@@ -15,6 +15,9 @@ export class UserService {
   createUser(user: User){
     return this.http.post(this.baseUri+'/create',user,{headers: this.headers});
   }
+  getUserById(id: any){
+    return this.http.get(this.baseUri+'/get/'+id);
+  }
   readUsers(){
     return this.http.get(this.baseUri+'/read',{headers: this.headers});
   }

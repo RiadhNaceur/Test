@@ -24,6 +24,14 @@ router.get('/read', (req,res,nex) => {
     })
 });
 
+router.get('/get/:id', (req,res,nex) => {
+    User.findById({_id:req.params.id}, (err,user)=>{
+        if (err)
+        res.status(500).json({errmsg: err});
+        res.status(200).send(user);
+    })
+});
+
 router.put('/update', (req,res,nex) => {
     User.findById(req.body._id, (err,user)=>{
         if (err)

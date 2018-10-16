@@ -11,7 +11,7 @@ import {UserService} from './shared/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 const appRoutes:Routes=[
   {path: '', component: ListComponent},
-  {path: 'createUpdate', component: CreateUpdateComponent}
+  {path: 'createUpdate/:id', component: CreateUpdateComponent}
 ];
 
 @NgModule({

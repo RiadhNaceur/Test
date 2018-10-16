@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   addUser(event: any){
     event.preventDefault();
     this.userService.setter(new User);
-    this.router.navigate(['/createUpdate']);
+    this.router.navigate(['/createUpdate/0']);
 
   }
 
