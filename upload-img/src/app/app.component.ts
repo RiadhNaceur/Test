@@ -17,8 +17,8 @@ export class AppComponent {
   onSelected(event){
     if (event.target.files) {
       this.files = event.target.files;
-      var filesAmount = event.target.files.length;
-      for (let i = 0; i < filesAmount; i++) {{
+      /*var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
 
         var reader = new FileReader();
 
@@ -26,9 +26,9 @@ export class AppComponent {
           this.urls.push(event.target.result);
         }
         reader.readAsDataURL(event.target.files[i]); // read file as data url
-      }
+      
 
-    }
+    }*/
   }
   }
   onUpload(){
@@ -46,7 +46,7 @@ export class AppComponent {
     files = this.files;
     console.log(files);
     var formData = new FormData();
-    Array.from(files).forEach(f => formData.append('file'+f.name,f))
+    Array.from(files).forEach(f => formData.append('file',f))
     this.http.post('http://juridique.positiftunisie.com/public/user/addws', formData)
       .subscribe(event => {
         console.log('done')
