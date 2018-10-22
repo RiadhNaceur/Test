@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
 readUsers(){
   this.userService.readUsers().subscribe(
     data=>{
-      console.log(data);
+      
       this.users = data['msg'];
     },
     error=>{
@@ -34,13 +34,14 @@ readUsers(){
 
 update(user){
 this.userService.setter(user);
-localStorage.setItem('usrid',user._id);
-this.router.navigate(['/createUpdate/'+user._id]);
+localStorage.setItem('usrid',user.id);
+this.router.navigate(['/createUpdate/'+user.id]);
 }
 
 delete(user){
-  this.userService.deleteUser(user._id).subscribe(
+  this.userService.deleteUser(user.id).subscribe(
     data=>{
+      console.log('spluiiiiiiice'+this.users.indexOf(user));
       this.users.splice(this.users.indexOf(user),1);
     },
     error=>{

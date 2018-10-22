@@ -46,7 +46,7 @@ export class AppComponent {
     files = this.files;
     console.log(files);
     var formData = new FormData();
-    Array.from(files).forEach(f => formData.append('file',f))
+    Array.from(files).forEach(f => formData.append('file'+f.name,f))
     this.http.post('http://juridique.positiftunisie.com/public/user/addws', formData)
       .subscribe(event => {
         console.log('done')

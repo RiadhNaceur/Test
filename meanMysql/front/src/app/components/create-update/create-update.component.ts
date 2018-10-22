@@ -20,11 +20,11 @@ export class CreateUpdateComponent implements OnInit {
   id;
   ngOnInit() {
    this.registrationForm = this.fb.group({
-    _id: [''],
+    id: [''],
     name: ['', [Validators.required, Validators.minLength(3)]],
-    lastname: [''],
-    email: [''],
-    password: ['']
+    lastname: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['',[Validators.required, Validators.minLength(6)]]
 });
 
 this.route.params.subscribe(params => {
