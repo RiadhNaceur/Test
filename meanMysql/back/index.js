@@ -7,7 +7,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
 var app = express();
-var appRoutes = require('./routes/app-routes');
+var appRoutes = require('./routes/client');
 
 //mongoose.connect('mongodb://localhost/meanDb', {useNewUrlParser: true});
 

@@ -1,0 +1,53 @@
+<form [formGroup]="registrationForm" (ngSubmit)=createUpdate()>
+  <!--<div class="form-group">
+    <label for="_id">ID</label>
+    <input type="text" name="_id" [(ngModel)]="user._id" class="form-control">
+  </div>-->
+  <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" formControlName = "name" [class.is-invalid]="userName.invalid &&
+      userName.touched" name="name"  class="form-control">
+      <div *ngIf="userName.invalid &&
+      userName.touched">
+        <small class="text-danger" 
+        *ngIf="userName.errors?.required">Ce champs est obligatoire</small>
+        <small class="text-danger" 
+        *ngIf="userName.errors?.minlength">Minimum 3 charactères</small>
+        </div>
+    </div> 
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" formControlName = "lastname" name="lastname"  class="form-control">
+        <div *ngIf="registrationForm.get('lastname').invalid &&
+        registrationForm.get('lastname').touched">
+          <small class="text-danger" 
+          *ngIf="registrationForm.get('lastname').errors?.required">Ce champs obligatoire</small>
+          <small class="text-danger" 
+        *ngIf="registrationForm.get('lastname').errors?.minlength">Minimum 3 charactères</small>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" formControlName = "email" name="email"  class="form-control">
+      <div *ngIf="registrationForm.get('email').invalid &&
+      registrationForm.get('email').touched">
+        <small class="text-danger" 
+        *ngIf="registrationForm.get('email').errors?.email">Ce champs est non valid</small>
+        <small class="text-danger" 
+        *ngIf="registrationForm.get('email').errors?.required">Ce champs est obligatoire</small>
+      </div>
+      
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" formControlName = "password" name="password"  class="form-control">
+      <div *ngIf="registrationForm.get('password').invalid &&
+      registrationForm.get('password').touched">
+        <small class="text-danger" 
+        *ngIf="registrationForm.get('password').errors?.required">Ce champs est obligatoire</small>
+        <small class="text-danger" 
+      *ngIf="registrationForm.get('password').errors?.minlength">Minimum 6 charactères</small>
+      </div>
+    </div>
+      <input  [disabled]="!registrationForm.valid" type="submit" value="Submit" class="btn btn-success">
+</form>
