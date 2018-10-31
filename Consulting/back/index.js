@@ -7,16 +7,16 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
 var app = express();
-var appRoutes = require('./routes/client');
+
+
 //var models = require('./routes/models');
 //mongoose.connect('mongodb://localhost/meanDb', {useNewUrlParser: true});
-
-
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(bodyParser.raw());
 app.use(cors());
-app.use('/', appRoutes);
+require("./routes")(app);
+//app.use('/', appRoutes);
 //app.use('/', models);
 /*app.get('/', function(req, res){
     res.send('Hello from server');

@@ -1,45 +1,19 @@
-var express = require('express');
-var router = express.Router();
+
+module.exports = function (app) {
+
+    var express = require('express');
+//var router = express.Router();
 var sequelize = require('sequelize');
 const jwt = require('jsonwebtoken');
 //const mod = require('./models');
-const Role  = require('../sequelize')
+const models  = require('../sequelize')
 
 
-router.post('/createrole', (req,res,nex) => {
-    console.log(req.body);
-    var newRole = Role.build({
-        role_nom:req.body.role_nom,
-        role_etat:req.body.role_etat
-    });
-    newRole.save().then(function (role){
-        res.status(200).send({role});     
-    }, function(err){
-        res.status(500).json({errmsg: err});
-    });
-
-});
 
 
-/*router.post('/create', (req,res,nex) => {
-    console.log(req.body);
-    var newUser = User.build({
-        name:req.body.name,
-        lastname:req.body.lastname,
-        email:req.body.email,
-        password:req.body.password 
-    });
-    newUser.save().then(function (user){
-        let payload = {subject: user.dataValues.id}
-        let token = jwt.sign(payload, 'secretKey');
-        res.status(200).send({token});     
-    }, function(err){
-        res.status(500).json({errmsg: err});
-    });
-
-});
-
-router.get('/read', (req,res,next) => {
+};
+/*
+app.get('/read', (req,res,next) => {
 
     mod.User.findAll().then(function (users){
         res.status(200).json({msg: users});    
@@ -49,7 +23,7 @@ router.get('/read', (req,res,next) => {
 
 });
 
-router.get('/get/:id', (req,res,nex) => {
+app.get('/get/:id', (req,res,nex) => {
     User.findById(req.params.id).then(function (user){
         res.status(200).send(user);    
     }, function(err){
@@ -57,7 +31,7 @@ router.get('/get/:id', (req,res,nex) => {
     });
 });
 
-router.put('/update', (req,res,nex) => {
+app.put('/update', (req,res,nex) => {
         User.findById(req.body.id).then(function (user){
             console.log('userrrrr'+user);
             user.updateAttributes({
@@ -74,7 +48,7 @@ router.put('/update', (req,res,nex) => {
             res.status(500).json({errmsg: err});
         });
     })
-router.delete('/delete/:id', (req,res,nex) => {
+app.delete('/delete/:id', (req,res,nex) => {
 
     User.destroy({where: {id: req.params.id}}).then(function (user){
         res.status(200).json({msg: user});     
@@ -85,7 +59,7 @@ router.delete('/delete/:id', (req,res,nex) => {
 });
 
 
-router.post('/login', (req,res,nex) => {
+app.post('/login', (req,res,nex) => {
 
     User.findOne({where: {email:req.body.email}}).then(function (user){
         if (!user || req.body.password !== user.password){
@@ -118,4 +92,6 @@ function verifyToken(req, res, next){
   next()
     
 }*/
-module.exports = router;
+
+
+//module.exports = router;
