@@ -16,7 +16,11 @@ const User = UserModel(sequelize, Sequelize)
 
 
 User.belongsTo(Role, {foreignKey: 'role_id'});
+
+
+
 Action.belongsTo(Module, {foreignKey: 'module_id'});
+Module.hasMany(Action, {foreignKey: 'module_id'});
 
 Action.belongsToMany(Role, {through: 'roleactions', foreignKey: 'action_id'});
 Role.belongsToMany(Action, {through: 'roleactions', foreignKey: 'role_id'});
