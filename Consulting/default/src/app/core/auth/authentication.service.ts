@@ -9,7 +9,6 @@ import { TokenStorage } from './token-storage.service';
 import { UtilsService } from '../services/utils.service';
 import { AccessData } from './access-data';
 import { Credential } from './credential';
-import { NgForm } from '@angular/forms';
 
 @Injectable()
 export class AuthenticationService implements AuthService {
@@ -18,6 +17,7 @@ export class AuthenticationService implements AuthService {
 	API_ENDPOINT_REFRESH = '/refresh';
 	API_ENDPOINT_REGISTER = '/register';
 	private headers = new HttpHeaders().set('Content-Type','application/json')
+
 	public onCredentialUpdated$: Subject<AccessData>;
 
 	constructor(
@@ -100,16 +100,15 @@ export class AuthenticationService implements AuthService {
 	 * @param {Credential} credential
 	 * @returns {Observable<any>}
 	 */
-	public login2(credential: Credential) {
-		console.log(this.API_URL + this.API_ENDPOINT_LOGIN + '?' + this.util.urlParam(credential));
+	public login(credential: Credential): Observable<any> {
 		// Expecting response from API
 		// tslint:disable-next-line:max-line-length
 		// {"id":1,"username":"admin","password":"demo","email":"admin@demo.com","accessToken":"access-token-0.022563452858263444","refreshToken":"access-token-0.9348573301432961","roles":["ADMIN"],"pic":"./assets/app/media/img/users/user4.jpg","fullname":"Mark Andre"}
+		
 		//return this.http.get<AccessData>(this.API_URL + this.API_ENDPOINT_LOGIN + '?' + this.util.urlParam(credential)).pipe(
-			return this.http.post('http://localhost:8080/login',this.util.getFindHTTPParams(credential),{headers: this.headers});
-			/*return this.http.post<AccessData>('http://localhost:8080/login',this.util.urlParam(credential),{headers: this.headers}).pipe(
+			return this.http.post('http://localhost:8080/login',credential).pipe(
 			map((result: any) => {
-				console.log(result);
+				console.log('result: '+JSON.stringify(result));
 				if (result instanceof Array) {
 					return result.pop();
 				}
@@ -117,12 +116,9 @@ export class AuthenticationService implements AuthService {
 			}),
 			tap(this.saveAccessData.bind(this)),
 			catchError(this.handleError('login', []))
-		);*/
+		);
 	}
-	login(credential: any){
-		console.log('str: '+JSON.stringify(credential));
-		return this.http.post('http://localhost:8080/login',{"data": credential},{headers: this.headers});
-	}
+
 	/**
 	 * Handle Http operation that failed.
 	 * Let the app continue.
@@ -173,10 +169,10 @@ export class AuthenticationService implements AuthService {
 		// dummy token creation
 		credential = Object.assign({}, credential, {
 			accessToken: 'access-token-' + Math.random(),
-			refreshToken: 'access-token-' + Math.random(),
-			roles: ['USER'],
+			refreshToken: 'access-token-' + Math.random()
 		});
-		return this.http.post(this.API_URL + this.API_ENDPOINT_REGISTER, credential)
+		//return this.http.post(this.API_URL + this.API_ENDPOINT_REGISTER, credential)
+		return this.http.post('http://localhost:8080/user/createuser',credential)
 			.pipe(catchError(this.handleError('register', []))
 		);
 	}

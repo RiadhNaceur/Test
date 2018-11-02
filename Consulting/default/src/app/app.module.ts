@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './core/auth/authentication.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
-//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeApiService } from './fake-api/fake-api.service';
 
 import { LayoutModule } from './content/layout/layout.module';
@@ -58,7 +58,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-		//environment.isMockEnabled ? HttpClientInMemoryWebApiModule.forRoot(FakeApiService) : [],
+		environment.isMockEnabled ? HttpClientInMemoryWebApiModule.forRoot(FakeApiService) : [],
 		LayoutModule,
 		PartialsModule,
 		CoreModule,

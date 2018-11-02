@@ -38,6 +38,14 @@
 				<a href="javascript:;">terms & conditions</a>
 			</mat-checkbox>
 		</div>
+		<div class="form-group">
+			<label>Role: </label>
+			<select name="role" required="true" [(ngModel)]="model.roles" #roles="ngModel">
+					<option value="1">Client</option>
+					<option value="6">Expert</option>
+			</select>
+		</div>	
+		
 	</form>
 	<!--end::Form-->
 

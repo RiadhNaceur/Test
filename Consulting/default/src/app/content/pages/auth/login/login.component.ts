@@ -25,7 +25,7 @@ import { SpinnerButtonOptions } from '../../../partials/content/general/spinner-
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit, OnDestroy {
-	public model: any = { email: 'admin@demo.com', password: 'demoo' };
+	public model: any = { email: 'admin@demo.com', password: 'demo' };
 	@HostBinding('class') classes: string = 'm-login__signin';
 	@Output() actionChange = new Subject<string>();
 	public loading = false;
@@ -55,9 +55,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 	submit() {
 		this.spinner.active = true;
 		if (this.validate(this.f)) {
-			//console.log('model: '+this.model)
 			this.authService.login(this.model).subscribe(response => {
-				console.log('aaaaa'+response);
+				console.log(typeof response)
 				if (typeof response !== 'undefined') {
 					this.router.navigate(['/']);
 				} else {

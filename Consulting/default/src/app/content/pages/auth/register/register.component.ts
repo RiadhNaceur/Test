@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
 		this.spinner.active = true;
 		if (this.validate(this.f)) {
 			this.authService.register(this.model).subscribe(response => {
+				console.log(response);
 				this.action = 'login';
 				this.actionChange.next(this.action);
 				this.spinner.active = false;
@@ -94,6 +95,7 @@ export class RegisterComponent implements OnInit {
 		if (objectPath.get(f, 'form.controls.agree.errors.required')) {
 			this.errors.push(this.translate.instant('AUTH.VALIDATION.AGREEMENT_REQUIRED'));
 		}
+
 
 		if (this.errors.length > 0) {
 			this.authNoticeService.setNotice(this.errors.join('<br/>'), 'error');

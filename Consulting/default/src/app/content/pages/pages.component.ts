@@ -30,7 +30,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
 	@Input() asideLeftCloseClass: any;
 
 	public player: AnimationPlayer;
-
+	public role;
 	// class for the header container
 	pageBodyClass$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
@@ -84,7 +84,10 @@ export class PagesComponent implements OnInit, AfterViewInit {
 		});
 	}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.role = (localStorage.getItem('userRoles')==='["USER"]') ? 'user' : 'admin';
+		console.log('roleee: '+this.role)
+	}
 
 	ngAfterViewInit(): void {
 		setTimeout(() => {
