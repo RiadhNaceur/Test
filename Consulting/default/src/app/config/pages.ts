@@ -11,6 +11,9 @@ export class PagesConfig implements ConfigModel {
 					desc: 'Latest updates and statistic charts'
 				}
 			},
+			'roles': { 
+				page: { title: 'Roles', desc: 'Mes roles' }
+			  },
 			ngbootstrap: {
 				accordion: {
 					page: { title: 'Accordion', desc: '' }

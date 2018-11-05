@@ -13,6 +13,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
+import { RolesComponent } from './roles/roles.component';
+import { MatTableModule } from '@angular/material';
 
 @NgModule({
 	declarations: [
@@ -20,6 +22,7 @@ import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 		ActionComponent,
 		ProfileComponent,
 		ErrorPageComponent,
+		RolesComponent,
 	],
 	imports: [
 		CommonModule,
@@ -32,6 +35,7 @@ import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 		MailModule,
 		ECommerceModule,
 		AngularEditorModule,
+		MatTableModule
 	],
 	providers: []
 })

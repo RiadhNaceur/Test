@@ -657,6 +657,13 @@ export class MenuConfig implements ConfigModel {
 						]
 					},
 					{
+						title: 'Roles',
+						root: true,
+						bullet: 'dot',
+						icon: 'flaticon-user-settings',
+						page: '/roles'
+					},
+					{
 						title: 'Ng-Bootstrap',
 						root: true,
 						bullet: 'dot',

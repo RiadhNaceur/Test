@@ -51,8 +51,10 @@ module.exports = function (app) {
     
     app.get('/role/get', (req,res,next) => {
 
-        models.Role.findAll().then(function (roles){
-            res.status(200).json({msg: roles});    
+        models.Role.findAll({
+            attributes: ['role_nom', 'createdAt','role_etat']})
+            .then(function (roles){
+            res.status(200).send(roles);    
         }, function(err){
             res.status(500).json({errmsg: err});
         })

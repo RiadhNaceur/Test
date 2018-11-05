@@ -25,7 +25,7 @@ import { SpinnerButtonOptions } from '../../../partials/content/general/spinner-
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit, OnDestroy {
-	public model: any = { email: 'admin@demo.com', password: 'demo' };
+	public model: any = { email: 'test@testttt.com', password: 'aaaaaa' };
 	@HostBinding('class') classes: string = 'm-login__signin';
 	@Output() actionChange = new Subject<string>();
 	public loading = false;
@@ -71,9 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		// demo message to show
 		if (!this.authNoticeService.onNoticeChanged$.getValue()) {
-			const initialNotice = `Use account
-			<strong>admin@demo.com</strong> and password
-			<strong>demo</strong> to continue.`;
+			const initialNotice = ``;
 			this.authNoticeService.setNotice(initialNotice, 'success');
 		}
 	}

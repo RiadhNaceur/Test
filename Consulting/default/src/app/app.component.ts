@@ -68,7 +68,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 		});
 
 		// register translations
-		this.translationService.loadTranslations(enLang, chLang, esLang, jpLang, deLang, frLang);
+		this.translationService.loadTranslations(frLang, enLang, chLang, esLang, jpLang, deLang);
 
 		// override config by router change from pages config
 		this.router.events

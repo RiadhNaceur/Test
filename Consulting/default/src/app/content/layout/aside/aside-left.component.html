@@ -9,7 +9,7 @@
 </div>
 <!-- END: Aside Menu -->
 <!-- </div> -->
-
+{{ menuAsideService.menuList$ | mConsoleLog}}
 <ng-template #mMenuListing>
 	<ng-container *ngFor="let child of menuAsideService.menuList$ | async">
 		<m-menu-section *ngIf="child.section" [item]="child"></m-menu-section>

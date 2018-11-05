@@ -10,6 +10,7 @@ import {
 	MatButtonModule,
 	MatFormFieldModule,
 	MatInputModule,
+	MatSelectModule,
 	MatCheckboxModule
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
@@ -22,6 +23,7 @@ import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 		FormsModule,
 		MatButtonModule,
 		MatInputModule,
+		MatSelectModule,
 		MatFormFieldModule,
 		MatCheckboxModule,
 		TranslateModule.forChild(),
