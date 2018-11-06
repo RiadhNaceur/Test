@@ -1,61 +1,52 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource, MatSort} from '@angular/material';
 import{RoleService} from './role.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'm-roles',
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.scss']
 })
-export class RolesComponent implements OnInit {
+export class RolesComponent {
 
-  displayedColumns = ['nom', 'date', 'etat'];
+  displayedColumns = ['role_nom', 'createdAt', 'role_etat','action'];
   public tables;
-  public tables2: [];
-  dataSource = new MatTableDataSource(this.tables2);
+  public ELEMENT_DATA2;
+  public dataSource;
+  closeResult: string;
 
-
-  constructor(private RoleService: RoleService){}
+  constructor(private RoleService: RoleService, private modalService: NgbModal){}
   @ViewChild(MatSort) sort: MatSort;
 
   /**
   * Set the sort after the view init since this component will
   * be able to query its view for the initialized sort.
   */
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
-  med2014positif
+ ngAfterViewInit() {
+  
+}
   ngOnInit() {
-    this.RoleService.getRoles().subscribe(response => {
+      console.log(this.ELEMENT_DATA2)
+      this.RoleService.getRoles().subscribe(response => {
       console.log('rrrrrrrrrrr'+JSON.stringify(response))
-     //this.ELEMENT_DATA2 = response;
-     this.tables = response;
-     this.tables2 = this.tables;
+      this.ELEMENT_DATA2 = response;
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA2);
+      this.dataSource.sort = this.sort;
+      
     });
 
   }
+  getRole(id){
+    this.RoleService.getRole(id).subscribe(response => {
+      console.log('response: '+JSON.stringify(response))
+    });
+  }
+  open(content) {
+    this.modalService.open(content, {
+        size: 'lg'
+    });
 }
-export interface Element {
-  nom: string;
-  date: string;
-  etat: number;
-}
-export interface Element2 {
-  role_nom: string;
-  createdAt: string;
-  role_etat: string;
-}
-const ELEMENT_DATA2: Element2[] = [
-  {role_nom: 'Hydrogen', createdAt: '2018-01-01', role_etat: '1'},
-  {role_nom: 'Helium', createdAt: '2018-01-01', role_etat: '1'},
-  {role_nom: 'Lithium', createdAt: '2018-01-01', role_etat: '1'},
-  {role_nom: 'Beryllium', createdAt: '2018-01-01', role_etat: '1'},
-];
-const ELEMENT_DATA: Element[] = [
-  {nom: 'Hydrogen', date: '2018-01-01', etat: 1},
-  {nom: 'Helium', date: '2018-01-01', etat: 1},
-  {nom: 'Lithium', date: '2018-01-01', etat: 1},
-  {nom: 'Beryllium', date: '2018-01-01', etat: 1},
-];
 
+}

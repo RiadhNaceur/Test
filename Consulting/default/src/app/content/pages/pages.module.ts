@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { RolesComponent } from './roles/roles.component';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatSortModule,MatButtonModule } from '@angular/material';
+import { EditComponent } from './roles/edit/edit.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +24,7 @@ import { MatTableModule } from '@angular/material';
 		ProfileComponent,
 		ErrorPageComponent,
 		RolesComponent,
+		EditComponent,
 	],
 	imports: [
 		CommonModule,
@@ -35,7 +37,9 @@ import { MatTableModule } from '@angular/material';
 		MailModule,
 		ECommerceModule,
 		AngularEditorModule,
-		MatTableModule
+		MatTableModule,
+		MatSortModule,
+		MatButtonModule
 	],
 	providers: []
 })

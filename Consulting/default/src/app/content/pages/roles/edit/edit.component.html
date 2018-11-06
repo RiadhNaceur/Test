@@ -1,0 +1,22 @@
+<form class="m-login__form m-form" name="form" (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate>
+	<div class="form-group">
+		<mat-form-field>
+			<mat-label translate="AUTH.INPUT.EMAIL">Email</mat-label>
+			<input matInput type="email" name="email" placeholder="Email address" autocomplete="off"
+				   [(ngModel)]="model.email" #email="ngModel" email="true" required>
+		</mat-form-field>
+	</div>
+	<div class="form-group">
+		<mat-form-field>
+			<mat-label translate="AUTH.INPUT.PASSWORD">Password</mat-label>
+			<input matInput minlength="4" type="password" name="password" placeholder="Password" autocomplete="off"
+				   [(ngModel)]="model.password" #password="ngModel" required>
+		</mat-form-field>
+	</div>
+</form>
+<div class="m-login__action m-login__action--fit">
+	<a href="javascript:;" (click)="forgotPasswordPage($event)" class="m-link">
+		<span translate="AUTH.GENERAL.FORGOT_BUTTON">Forgot Password?</span>
+	</a>
+	<m-spinner-button [options]="spinner" (click)="submit()">{{'AUTH.LOGIN.BUTTON' | translate}}</m-spinner-button>
+</div>

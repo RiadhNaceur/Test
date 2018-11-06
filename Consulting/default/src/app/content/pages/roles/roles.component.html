@@ -1,37 +1,44 @@
 <div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="table" matSort>
-  <ng-container matColumnDef="nom">
+  <mat-table #table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="role_nom">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Nom du role </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.role_nom}} </mat-cell>
   </ng-container>
-  <ng-container matColumnDef="date">
+  <ng-container matColumnDef="createdAt">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Date de création </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.role_date}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.createdAt}} </mat-cell>
   </ng-container>
-  <ng-container matColumnDef="etat">
+  <ng-container matColumnDef="role_etat">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Etat </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.role_etat}} </mat-cell>
   </ng-container>
-
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let element"><button mat-button (click)="open(content)">Voir</button></mat-cell>
+  </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Lastname</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr *ngFor="let user of tables">
-      <td>{{user.role_nom}}</td>
-      <td>{{user.createdAt}}</td>
-      <td>{{user.role_etat}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="m-section">
+  <div class="m-section__content">
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Basic demo</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <m-edit></m-edit>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+      </div>
+    </ng-template>
+    <button class="btn btn-primary" (click)="open(content)">Launch demo modal</button>
+  </div>
+</div>
+
+
