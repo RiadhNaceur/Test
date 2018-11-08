@@ -14,7 +14,7 @@
   </ng-container>
   <ng-container matColumnDef="action">
     <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-    <mat-cell *matCellDef="let element"><button mat-button (click)="open(content)">Voir</button></mat-cell>
+    <mat-cell *matCellDef="let element"><button mat-button (click)="open(content,element.role_id)">Modifier</button></mat-cell>
   </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -31,7 +31,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <m-edit></m-edit>
+        <m-edit [id]=id></m-edit>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>

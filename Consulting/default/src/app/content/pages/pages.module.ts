@@ -14,8 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { RolesComponent } from './roles/roles.component';
-import { MatTableModule, MatSortModule,MatButtonModule } from '@angular/material';
+import * as Matr from '@angular/material';
 import { EditComponent } from './roles/edit/edit.component';
+
 
 @NgModule({
 	declarations: [
@@ -37,9 +38,17 @@ import { EditComponent } from './roles/edit/edit.component';
 		MailModule,
 		ECommerceModule,
 		AngularEditorModule,
-		MatTableModule,
-		MatSortModule,
-		MatButtonModule
+		Matr.MatTableModule,
+		Matr.MatSortModule,
+		Matr.MatButtonModule,
+		Matr.MatToolbarModule,
+		FormsModule,
+		Matr.MatButtonModule,
+		Matr.MatInputModule,
+		Matr.MatSelectModule,
+		Matr.MatFormFieldModule,
+		Matr.MatCheckboxModule,
+		Matr.MatSlideToggleModule,
 	],
 	providers: []
 })

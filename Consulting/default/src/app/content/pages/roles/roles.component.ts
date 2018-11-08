@@ -15,6 +15,7 @@ export class RolesComponent {
   public tables;
   public ELEMENT_DATA2;
   public dataSource;
+  public id;
   closeResult: string;
 
   constructor(private RoleService: RoleService, private modalService: NgbModal){}
@@ -34,7 +35,6 @@ export class RolesComponent {
       this.ELEMENT_DATA2 = response;
       this.dataSource = new MatTableDataSource(this.ELEMENT_DATA2);
       this.dataSource.sort = this.sort;
-      
     });
 
   }
@@ -43,7 +43,8 @@ export class RolesComponent {
       console.log('response: '+JSON.stringify(response))
     });
   }
-  open(content) {
+  open(content, id) {
+    this.id = id;
     this.modalService.open(content, {
         size: 'lg'
     });

@@ -32,15 +32,20 @@ module.exports = function (app) {
     })
 
     app.put('/role/update/:id', (req,res,nex) => {
+        var body = JSON.parse(JSON.stringify(req.body))
 
+        console.log('id: '+req.params.id);
+		console.log('model: '+ body);
         models.Role.findById(req.params.id).then(function (role){
                 const actions = req.body.action_list;
                 role.updateAttributes({
                     role_nom: req.body.role_nom,
                     role_etat: req.body.role_etat
                 }).then(function (UpdatedRole){
-                    UpdatedRole.setActions(actions);
-                    res.status(200).json({msg: UpdatedRole});
+                    if (actions){
+                        UpdatedRole.setActions(actions);
+                        res.status(200).json({msg: UpdatedRole});
+                    }
                 },function(err){
                     res.status(500).json({errmsg: err});
                 })
