@@ -3,7 +3,6 @@ import {MatTableDataSource, MatSort} from '@angular/material';
 import{RoleService} from './role.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
   selector: 'm-roles',
   templateUrl: './roles.component.html',
@@ -18,7 +17,8 @@ export class RolesComponent {
   public id;
   closeResult: string;
 
-  constructor(private RoleService: RoleService, private modalService: NgbModal){}
+  constructor(private RoleService: RoleService, private modalService: NgbModal){
+  }
   @ViewChild(MatSort) sort: MatSort;
 
   /**

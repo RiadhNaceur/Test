@@ -1,6 +1,9 @@
 import { Component, OnInit, Input,ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import{RoleService} from '../role.service';
+import {SnotifyService} from 'ng-snotify';
+import { Observable } from "rxjs";
+
 @Component({
   selector: 'm-edit',
   templateUrl: './edit.component.html',
@@ -8,23 +11,32 @@ import{RoleService} from '../role.service';
 })
 export class EditComponent implements OnInit {
   @Input() id: number;
-public model = {'nom': '', 'etat': ''}
+public model = {}
 public errors;
+errorMessage = '';
+public modules;
 @ViewChild('f') f: NgForm;
-  constructor(private RoleService: RoleService) { }
+  constructor(private RoleService: RoleService, private snotifyService: SnotifyService) {
+
+   }
+   
 
   ngOnInit() {
     this.RoleService.getRole(this.id).subscribe(response => {
-      console.log('ressponnsse: '+response.role_nom)
-     this.model.nom = response.role_nom;
-     this.model.etat = response.role_etat;
+      console.log(response)
+     this.model = response;
     });
-    
+    this.RoleService.getModules().subscribe(response => {
+      this.modules = response;
+      
+     });
+ 
   }
   validate(f: NgForm) {
 		if (f.form.status === 'VALID') {
 			return true;
-		}
+    }
+   
 
 		this.errors = [];
 		/*if (objectPath.get(f, 'form.controls.email.errors.email')) {
@@ -47,21 +59,49 @@ public errors;
     }*/
 
 		return false;
-	}
-  submit() {
-		
-			this.RoleService.updateRole(this.id,this.model).subscribe(response => {
-				console.log(typeof response)
-			/*	if (typeof response !== 'undefined') {
-					this.router.navigate(['/']);
-				} else {
-					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'error');
-				}
-				this.spinner.active = false;
-				this.cdr.detectChanges();
-			});*/
-		});
+  }
   
+  submit(f: NgForm) {
+    console.log(f.value)
+
+		/*	this.RoleService.updateRole(this.id,f).subscribe(
+				response => {
+         this.snotifyService.async('Veuillez patientez', successAction);
+
+			}, err=>{
+        this.errorMessage = err.message;
+        this.snotifyService.async('Veuillez patientez', errorAction);
+      });*/
 }
 
 }
+
+const successAction = Observable.create(observer => {
+  setTimeout(() => {
+    observer.next({
+      title: 'Success',
+      body: 'Role modifié !',
+      config: {
+        closeOnClick: true,
+        timeout: 1000,
+        showProgressBar: true
+      }
+    });
+    observer.complete();
+  }, 1000);
+});
+
+const errorAction = Observable.create(observer => {
+  setTimeout(() => {
+    observer.next({
+      title: 'Erreur',
+      body: 'Une erreur c\'est produite',
+      config: {
+        closeOnClick: true,
+        timeout: 1000,
+        showProgressBar: true
+      }
+    });
+    observer.complete();
+  }, 1000);
+});

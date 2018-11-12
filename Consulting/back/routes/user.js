@@ -85,10 +85,10 @@ app.delete('/user/delete/:id', (req,res,nex) => {
 });
 
 app.post('/login', (req,res,nex) => {
-var body = JSON.parse(JSON.stringify(req.body))
-
-  models.User.findOne({where: {user_email:body.email}}).then(function (user){
-        if (!user || body.password !== user.user_password){
+  //  console.log(req.body)
+//var body = JSON.parse(JSON.stringify(req.body))
+  models.User.findOne({where: {user_email:req.body.email}}).then(function (user){
+        if (!user || req.body.password !== user.user_password){
             res.status(401).send('mot de passe ou email invalid')
         }else{
             let payload = {subject: user.user_id}

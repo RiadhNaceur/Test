@@ -1,18 +1,33 @@
-<form class="" name="form" (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate>
+<form class=""  #f="ngForm"  (ngSubmit)="submit(f)" novalidate>
 	<div class="form-group">
 		<mat-form-field>
 			<mat-label>Nom du role</mat-label>
-			<input matInput type="text" name="role_nom" placeholder="Nom du role" autocomplete="off"
-				   [(ngModel)]="model.nom" #email="ngModel" email="true" required>
+			<input matInput type="text" name="role_nom"  placeholder="Nom du role" autocomplete="off"
+				   [(ngModel)]="model.role_nom" required>
 		</mat-form-field>
 	</div>
 	<section class="example-section">
-		<mat-slide-toggle [checked]="model.etat">Etat</mat-slide-toggle>
+		<mat-slide-toggle name="role_etat"  [(ngModel)]="model.role_etat">Etat</mat-slide-toggle>
 	</section>
 
-	<button mat-raised-button color="primary" (click)="submit()">Modifier</button>
+
+	<ng-container *ngFor="let module of modules">
+		<mat-checkbox name="module.module_nom" [(ngModel)]="model.role_etat" #mod="ngModel">{{module.module_nom}}</mat-checkbox>
+		{{mod.valid}}
+		<ng-container *ngIf="model.role_etat">
+				<ng-container  *ngFor="let action of module.actions">
+					<mat-checkbox  name="action.action_nom" >{{action.action_id}}</mat-checkbox>
+				</ng-container>
+		</ng-container>
+	</ng-container>
+	
+
+	<button mat-raised-button color="primary">Modifier</button>
 
 </form>
+<ng-snotify></ng-snotify>
+
+
 
 
 

@@ -23,7 +23,9 @@
               "src/styles.scss",
               "src/assets/vendors/base/vendors.bundle.css",
               "src/assets/demo/default/base/style.bundle.css",
-              "node_modules/material-design-icons/iconfont/material-icons.css"
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/ng-snotify/styles/material.css"
+
             ],
             "scripts": [
               "src/assets/vendors/base/vendors.bundle.js",

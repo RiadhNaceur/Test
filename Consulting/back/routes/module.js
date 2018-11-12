@@ -43,7 +43,7 @@ module.exports = function (app) {
     app.get('/module/get', (req,res,next) => {
 
         models.Module.findAll( {include: [models.Action]}).then(function (modules){
-            res.status(200).json({msg: modules});    
+            res.status(200).send(modules);    
         }, function(err){
             res.status(500).json({errmsg: err});
         });

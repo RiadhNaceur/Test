@@ -46,6 +46,7 @@ import { MenuAsideService } from './core/services/layout/menu-aside.service';
 import { LayoutRefService } from './core/services/layout/layout-ref.service';
 import { SplashScreenService } from './core/services/splash-screen.service';
 import { DataTableService } from './core/services/datatable.service';
+//import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -69,6 +70,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		NgbModule.forRoot(),
 		TranslateModule.forRoot(),
 		MatProgressSpinnerModule,
+		//SnotifyModule,
+
 	],
 	providers: [
 		AclService,
@@ -99,7 +102,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		{
 			provide: HAMMER_GESTURE_CONFIG,
 			useClass: GestureConfig
-		}
+		},
+		/*{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+		SnotifyService*/
 	],
 	bootstrap: [AppComponent]
 })

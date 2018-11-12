@@ -16,6 +16,8 @@ import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { RolesComponent } from './roles/roles.component';
 import * as Matr from '@angular/material';
 import { EditComponent } from './roles/edit/edit.component';
+import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+
 
 
 @NgModule({
@@ -49,7 +51,11 @@ import { EditComponent } from './roles/edit/edit.component';
 		Matr.MatFormFieldModule,
 		Matr.MatCheckboxModule,
 		Matr.MatSlideToggleModule,
+		SnotifyModule,
 	],
-	providers: []
+	providers: [
+		{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+		SnotifyService
+	  ],
 })
 export class PagesModule {}
