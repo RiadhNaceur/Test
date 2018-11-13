@@ -17,6 +17,8 @@ import { RolesComponent } from './roles/roles.component';
 import * as Matr from '@angular/material';
 import { EditComponent } from './roles/edit/edit.component';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -52,6 +54,7 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 		Matr.MatCheckboxModule,
 		Matr.MatSlideToggleModule,
 		SnotifyModule,
+		ReactiveFormsModule,
 	],
 	providers: [
 		{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},

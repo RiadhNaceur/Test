@@ -33,8 +33,8 @@ module.exports = function (app) {
 
     app.put('/role/update/:id', (req,res,nex) => {
         console.log(req.body)
-        models.Role.findById(req.params.id).then(function (role){
-                const actions = req.body.action_list;
+        /*models.Role.findById(req.params.id).then(function (role){
+                const actions = req.body.actions;
                 role.updateAttributes({
                     role_nom: req.body.role_nom,
                     role_etat: req.body.role_etat
@@ -52,7 +52,7 @@ module.exports = function (app) {
             }, function(err){
                 console.log(err)
                 res.status(400).json({errmsg: err});
-            });
+            });*/
         })
     
     app.get('/role/get', (req,res,next) => {
@@ -77,21 +77,28 @@ module.exports = function (app) {
                 include: [models.Module]
             }]
             }).then(function (role){
-                /*tab['role_id'] = role.role_id;
+               /* tab['role_id'] = role.role_id;
                 tab['role_nom'] = role.role_nom;
                 tab['role_etat'] = role.role_etat;
                 tab['createdAt'] = role.createdAt;
-                tab['updatedAt'] = role.updatedAt;
-
+                tab['updatedAt'] = role.updatedAt;*/
+                
                 role.actions.forEach(function(element) {
+                    key = element.module.module_id;
                    
-                    tab2[element.module.module_id] = element.module.dataValues //.push();
-                    tab2[element.module.module_id]['actions'] = element.action_id
+                    tab2[element.module.module_id] = element.module.module_id //.push();
+                    
+                   //tab2[element.module.module_id]['actions'] = element.action_id
                   });
-                  tab['modules'] = tab2;
-                  console.log(tab)
-                /*console.log(role.dataValues)
-                console.log(tab)*/
+                  
+                  //tab['modules'] = tab2;
+                  var filtered = tab2.filter(function (el) {
+                    return el != null;
+                  })
+                  
+                 // role.dataValues['role'] = role;
+                  role.dataValues['modules'] = tab2;
+                  console.log(role.dataValues['modules'][3])
             res.status(200).send(role);    
         }, function(err){
             res.status(500).json({errmsg: err});

@@ -4,6 +4,7 @@ import{RoleService} from '../role.service';
 import {SnotifyService} from 'ng-snotify';
 import { Observable } from "rxjs";
 
+
 @Component({
   selector: 'm-edit',
   templateUrl: './edit.component.html',
@@ -14,7 +15,9 @@ export class EditComponent implements OnInit {
 public model = {}
 public errors;
 errorMessage = '';
-public modules;
+public allModules;
+public modules:[''];
+
 @ViewChild('f') f: NgForm;
   constructor(private RoleService: RoleService, private snotifyService: SnotifyService) {
 
@@ -23,14 +26,29 @@ public modules;
 
   ngOnInit() {
     this.RoleService.getRole(this.id).subscribe(response => {
-      console.log(response)
+    console.log(response)
      this.model = response;
+     this.modules = response['modules'];
+
     });
     this.RoleService.getModules().subscribe(response => {
-      this.modules = response;
-      
+      console.log(response)
+    this.allModules = response;
      });
+
  
+  }
+  inArray(array, needle){
+      return array.indexOf(needle) >= 0;
+  }
+
+  Changing($event,id){
+    if (this.modules[id]){
+      this.modules[id] = ($event.checked) ? id : null
+    }else{
+      this.modules.push(id)
+    }
+    console.log(this.modules)
   }
   validate(f: NgForm) {
 		if (f.form.status === 'VALID') {

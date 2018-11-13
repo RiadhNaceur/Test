@@ -11,24 +11,23 @@
 	</section>
 
 
-	<ng-container *ngFor="let module of modules">
-		<mat-checkbox name="module.module_nom" [(ngModel)]="model.role_etat" #mod="ngModel">{{module.module_nom}}</mat-checkbox>
-		{{mod.valid}}
-		<ng-container *ngIf="model.role_etat">
+	<ng-container *ngFor="let module of allModules">
+		
+		<mat-checkbox name="module.module_nom"  [checked]="modules[module.module_id]" (change)="Changing($event,module.module_id)">{{module.module_nom}}</mat-checkbox>
+		
+		<!--<ng-container *ngIf="model.role_etat">
 				<ng-container  *ngFor="let action of module.actions">
 					<mat-checkbox  name="action.action_nom" >{{action.action_id}}</mat-checkbox>
 				</ng-container>
-		</ng-container>
+		</ng-container>-->
 	</ng-container>
 	
 
 	<button mat-raised-button color="primary">Modifier</button>
 
 </form>
+
 <ng-snotify></ng-snotify>
-
-
-
 
 
 	
