@@ -17,7 +17,6 @@ import { NgForm } from '@angular/forms';
 import * as objectPath from 'object-path';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerButtonOptions } from '../../../partials/content/general/spinner-button/button-options.interface';
-
 @Component({
 	selector: 'm-login',
 	templateUrl: './login.component.html',

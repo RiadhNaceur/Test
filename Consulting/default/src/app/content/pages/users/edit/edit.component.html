@@ -1,0 +1,127 @@
+<div class="m-portlet" [ngClass]="{ 'm-portlet--body-progress' : viewLoading, 'm-portlet--body-progress-overlay' : loadingAfterSubmit }">
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <span class="m-portlet__head-icon m--hide">
+            <i class="la la-gear"></i>
+          </span>
+          <h3 class="m-portlet__head-text">{{Title}}</h3>
+        </div>
+      </div>
+    </div>
+    <form class="m-form" [formGroup]="customerForm">
+      <div class="m-portlet__body">
+  
+        <div class="m-portlet__body-progress">
+
+          <mat-spinner [diameter]="20" ></mat-spinner>
+        </div>
+  
+  
+        <div class="form-group m-form__group row">
+          <div class="col-lg-4 m--margin-bottom-20-mobile">
+            <mat-form-field class="mat-form-field-fluid">
+              <input matInput placeholder="Enter First Name" formControlName="user_nom" />
+              <mat-error>First Name is
+                <strong>required</strong>
+              </mat-error>
+              <mat-hint align="start">Please enter
+                <strong>First Name</strong>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 m--margin-bottom-20-mobile">
+            <mat-form-field class="mat-form-field-fluid">
+              <input matInput placeholder="Enter Last Name" formControlName="user_prenom" />
+              <mat-error>Last Name is
+                <strong>required</strong>
+              </mat-error>
+              <mat-hint align="start">Please enter
+                <strong>Last Name</strong>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="m-separator m-separator--dashed"></div>
+        <div class="form-group m-form__group row">
+          <div class="col-lg-4 m--margin-bottom-20-mobile">
+            <mat-form-field class="mat-form-field-fluid">
+              <input type="email" matInput placeholder="Enter Email" formControlName="user_email" />
+              <mat-error>Email is
+                <strong>required</strong>
+              </mat-error>
+              <mat-hint align="start">Please enter
+                <strong>Email</strong>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 m--margin-bottom-20-mobile">
+              <mat-form-field class="mat-form-field-fluid">
+                <input  matInput placeholder="Enter Password"  [type]="hide ? 'password' : 'text'" formControlName="user_password" />
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error>Password is
+                  <strong>required</strong>
+                </mat-error>
+                <mat-hint align="start">Please enter
+                  <strong>Password</strong>
+                </mat-hint>
+              </mat-form-field>
+            </div>
+          <div class="col-lg-4 m--margin-bottom-20-mobile">
+            <mat-form-field class="mat-form-field-fluid">
+              <input matInput [matDatepicker]="picker" placeholder="Choose a Date of Birth" formControlName="user_date_nais" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-hint align="start">Please enter
+                <strong>Date of Birth</strong> in 'mm/dd/yyyy' format</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 m--margin-bottom-20-mobile">
+            <mat-form-field class="mat-form-field-fluid">
+              <input type="text" matInput placeholder="Enter Address" formControlName="user_adresse" />
+              <mat-error>Adresse
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="m-separator m-separator--dashed"></div>
+        <div class="form-group m-form__group row">
+            <div class="col-lg-4 m--margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                  <input type="number" matInput placeholder="Enter Code Postal" formControlName="user_cp" />
+                  <mat-error>Code Postal
+                    <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+         <div class="col-lg-4 m--margin-bottom-20-mobile">
+            <mat-form-field class="mat-form-field-fluid">
+              <mat-select placeholder="Type" formControlName="role_id">
+                <mat-option value="8">Admin</mat-option>
+                <mat-option value="10">Expert</mat-option>
+              </mat-select>
+              <mat-hint align="start">
+                <strong>Account Type</strong>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+        <div class="m-form__actions m-form__actions--solid">
+          <div class="row text-right">
+            <div class="col-lg-12">
+              <button type="button" mat-raised-button [mat-dialog-close]='updated' cdkFocusInitial matTooltip="Cancel changes">
+                Fermer
+              </button>&nbsp;
+              <button type="button" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="viewLoading" matTooltip="Save changes">
+                {{titre_button}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <ng-snotify></ng-snotify>

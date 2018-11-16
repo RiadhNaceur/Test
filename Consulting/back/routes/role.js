@@ -16,7 +16,7 @@ module.exports = function (app) {
     })
     
     app.post('/role/createrole', (req,res,nex) => {
-        const actions = req.body.action_list;
+        const actions = req.body.actions;
         console.log(req.body);
         var newRole = models.Role.build({
             role_nom:req.body.role_nom,
@@ -33,7 +33,7 @@ module.exports = function (app) {
 
     app.put('/role/update/:id', (req,res,nex) => {
         console.log(req.body)
-        /*models.Role.findById(req.params.id).then(function (role){
+       models.Role.findById(req.params.id).then(function (role){
                 const actions = req.body.actions;
                 role.updateAttributes({
                     role_nom: req.body.role_nom,
@@ -52,7 +52,7 @@ module.exports = function (app) {
             }, function(err){
                 console.log(err)
                 res.status(400).json({errmsg: err});
-            });*/
+            });
         })
     
     app.get('/role/get', (req,res,next) => {
@@ -88,17 +88,20 @@ module.exports = function (app) {
                    
                     tab2[element.module.module_id] = element.module.module_id //.push();
                     
-                   //tab2[element.module.module_id]['actions'] = element.action_id
                   });
                   
-                  //tab['modules'] = tab2;
                   var filtered = tab2.filter(function (el) {
                     return el != null;
                   })
+
+                  console.log(filtered)
+                  for (var key in filtered) {
+                  console.log("key " + key + " has value " + filtered[key]);
+                  }
+
+                  role.dataValues['modules'] = filtered;
                   
-                 // role.dataValues['role'] = role;
-                  role.dataValues['modules'] = tab2;
-                  console.log(role.dataValues['modules'][3])
+                  
             res.status(200).send(role);    
         }, function(err){
             res.status(500).json({errmsg: err});

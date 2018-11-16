@@ -1,0 +1,14 @@
+span.etat_cell{
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: block;
+    text-align: center;
+    min-width: 80px
+}
+span.desactivee {
+    background: #de3a3a;
+}
+span.activee {
+    background: #45a545;
+}

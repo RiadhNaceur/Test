@@ -6,6 +6,7 @@ import { NgxPermissionsGuard } from 'ngx-permissions';
 import { ProfileComponent } from './header/profile/profile.component';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { RolesComponent } from './roles/roles.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
 	{
@@ -67,6 +68,10 @@ const routes: Routes = [
 			{
 				path: 'roles',
 				component: RolesComponent
+			},
+			{
+				path: 'users',
+				component: UsersComponent
 			}
 		]
 	},

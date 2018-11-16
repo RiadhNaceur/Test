@@ -7,20 +7,22 @@ var sequelize = require('sequelize');
 const jwt = require('jsonwebtoken');
 //const mod = require('./models');
 const models  = require('../sequelize')
-const roles = {1: 'ADMIN',6: 'USER'}
+const roles = {8: 'ADMIN',10: 'USER'}
+
+
 app.post('/user/createuser', (req,res,nex) => {
     var body = req.body
     console.log(body);
     var newUser = models.User.build({
-        user_nom: body.fullname,
-        user_prenom: body.fullname,
-        /*user_date_nais: body.user_date_nais,
-        user_civilite: body.user_civilite,
+        user_nom: body.user_nom,
+        user_prenom: body.user_prenom,
+        user_date_nais: body.user_date_nais,
+        //user_civilite: body.user_civilite,
         user_adresse: body.user_adresse,
-        user_cp: body.user_cp,*/
-        user_email: body.email,
-        user_password: body.password,
-        role_id: body.roles,
+        user_cp: body.user_cp,
+        user_email: body.user_email,
+        user_password: body.user_password,
+        role_id: body.role_id,
     });
     newUser.save().then(function (user){
         let payload = {subject: user.dataValues.id}
@@ -35,9 +37,9 @@ app.post('/user/createuser', (req,res,nex) => {
 app.get('/user/get', (req,res,next) => {
 
     models.User.findAll().then(function (users){
-        res.status(200).json({msg: users});    
+        res.status(200).send(users);    
     }, function(err){
-        res.status(500).json({errmsg: err});
+        res.status(500).send(err);
     });
 
 });
@@ -46,7 +48,7 @@ app.get('/user/get/:id', verifyToken, (req,res,nex) => {
     models.User.findById(req.params.id).then(function (user){
         res.status(200).send(user);    
     }, function(err){
-        res.status(500).json({errmsg: err});
+        res.status(500).send(err);
     });
 });
 

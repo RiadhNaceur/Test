@@ -22,4 +22,7 @@ export class RoleService {
 	public getModules(){
 		return this.http.get<any>('http://localhost:8080/module/get');
 	}
+	public addRole(model: NgForm){
+		return this.http.post<any>('http://localhost:8080/role/createrole/', model.value);
+	}
 }

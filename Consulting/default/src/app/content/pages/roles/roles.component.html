@@ -1,31 +1,51 @@
-<div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort>
-  <ng-container matColumnDef="role_nom">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Nom du role </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.role_nom}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="createdAt">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Date de création </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.createdAt}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="role_etat">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Etat </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.role_etat}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="action">
-    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-    <mat-cell *matCellDef="let element"><button mat-button (click)="open(content,element.role_id)">Modifier</button></mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>
+<m-portlet [options]="{headLarge: true}">
 
-<div class="m-section">
+    <ng-container mPortletHeadTitle>
+      <div class="m-portlet__head-title">
+        <h3 class="m-portlet__head-text">
+          <span>Liste des roles</span>
+        </h3>
+      </div>
+    </ng-container>
+  
+    <ng-container mPortletHeadTools>
+      <button (click)="openDialog(0)" mat-raised-button matTooltip="Nouveau Role" color="primary" type="button">
+        <span>Nouveau Role</span>
+      </button>
+    </ng-container>
+
+    <ng-container mPortletBody>
+        <mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="role_nom">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nom du role </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.role_nom}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="createdAt">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Date de création </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.createdAt}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role_etat">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Etat </mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+            <span class="etat_cell" [ngClass]="{'activee': element.role_etat, 'desactivee': !element.role_etat}">{{element.role_eetat}}</span></mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <!--<mat-cell *matCellDef="let element"><button mat-button (click)="open(content,element.role_id)">Modifier</button></mat-cell>-->
+          <mat-cell *matCellDef="let element"><button mat-button (click)="openDialog(element.role_id)">Modifier</button></mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      
+  </ng-container>
+</m-portlet>
+
+<!--<div class="m-section">
   <div class="m-section__content">
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
-        <h4 class="modal-title">Basic demo</h4>
+        <h4 class="modal-title">{{titre}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -34,9 +54,9 @@
         <m-edit [id]=id></m-edit>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Fermer</button>
       </div>
     </ng-template>
   </div>
-</div>
+</div>-->
 

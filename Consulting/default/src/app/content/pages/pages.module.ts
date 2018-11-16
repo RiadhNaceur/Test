@@ -16,8 +16,10 @@ import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { RolesComponent } from './roles/roles.component';
 import * as Matr from '@angular/material';
 import { EditComponent } from './roles/edit/edit.component';
+import { EditUsersComponent } from './users/edit/edit.component';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -30,6 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 		ErrorPageComponent,
 		RolesComponent,
 		EditComponent,
+		UsersComponent,
+		EditUsersComponent,
 	],
 	imports: [
 		CommonModule,
@@ -55,10 +59,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 		Matr.MatSlideToggleModule,
 		SnotifyModule,
 		ReactiveFormsModule,
+		Matr.MatIconModule,
+		Matr.MatMenuModule,
+		Matr.MatProgressSpinnerModule,
+		Matr.MatPaginatorModule,
+		Matr.MatDatepickerModule,
+		Matr.MatDialogModule,
+		
 	],
 	providers: [
 		{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
 		SnotifyService
 	  ],
+	  entryComponents: [
+		EditComponent,
+		EditUsersComponent,
+	]
 })
 export class PagesModule {}
