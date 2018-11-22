@@ -29,6 +29,7 @@ import { MatProgressBarModule, MatTabsModule, MatButtonModule, MatTooltipModule 
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { FormsModule } from '@angular/forms';
+import { HeaderFrontComponent } from './header-front/header-front.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	// suppressScrollX: true
@@ -62,6 +63,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		SearchDefaultComponent,
 
 		HeaderSearchComponent,
+
+		HeaderFrontComponent,
 
 	],
 	exports: [
