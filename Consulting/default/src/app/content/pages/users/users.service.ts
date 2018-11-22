@@ -23,4 +23,9 @@ export class UsersService {
 	public addUser(model){
 		return this.http.post<any>('http://localhost:8080/user/createuser/', model);
 	}
+
+	public deleteUser(id){
+		return this.http.delete<any>('http://localhost:8080/user/delete/'+id);
+	}
+
 }

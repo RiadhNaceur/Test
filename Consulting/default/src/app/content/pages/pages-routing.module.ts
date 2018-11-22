@@ -7,10 +7,16 @@ import { ProfileComponent } from './header/profile/profile.component';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 import { RolesComponent } from './roles/roles.component';
 import { UsersComponent } from './users/users.component';
+import { ModulesComponent } from './modules/modules.component';
+import {AccueilComponent} from './accueil/accueil.component';
 
 const routes: Routes = [
 	{
 		path: '',
+		component: AccueilComponent
+	},
+	{
+		path: 'admin',
 		component: PagesComponent,
 		canActivate: [NgxPermissionsGuard],
 		data: {
@@ -70,9 +76,13 @@ const routes: Routes = [
 				component: RolesComponent
 			},
 			{
+				path: 'modules',
+				component: ModulesComponent
+			},
+			{
 				path: 'users',
 				component: UsersComponent
-			}
+			},
 		]
 	},
 	{

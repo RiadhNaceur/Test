@@ -22,6 +22,7 @@ app.post('/user/createuser', (req,res,nex) => {
         user_cp: body.user_cp,
         user_email: body.user_email,
         user_password: body.user_password,
+        user_etat: body.user_etat,
         role_id: body.role_id,
     });
     newUser.save().then(function (user){
@@ -65,6 +66,7 @@ app.put('/user/update/:id', (req,res,nex) => {
                 user_cp: req.body.user_cp,
                 user_email: req.body.user_email,
                 user_password: req.body.user_password,
+                user_etat: req.body.user_etat,
                 role_id: req.body.role_id
             }).then(function (Updateduser){
                 res.status(200).json({msg: Updateduser});
@@ -79,9 +81,9 @@ app.put('/user/update/:id', (req,res,nex) => {
 app.delete('/user/delete/:id', (req,res,nex) => {
 
     models.User.destroy({where: {user_id: req.params.id}}).then(function (user){
-        res.status(200).json({msg: user});     
+        res.status(200).json(user);     
     }, function(err){
-        res.status(500).json({errmsg: err});
+        res.status(500).json(err);
     });
 
 });

@@ -20,8 +20,11 @@ import { EditUsersComponent } from './users/edit/edit.component';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './users/users.component';
-
-
+import { ModulesComponent } from './modules/modules.component';
+import { EditModuleComponent } from './modules/edit-module/edit-module.component';
+import { ActionsComponent } from './actions/actions.component';
+import { EditActionComponent } from './actions/edit-action/edit-action.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 @NgModule({
@@ -34,6 +37,11 @@ import { UsersComponent } from './users/users.component';
 		EditComponent,
 		UsersComponent,
 		EditUsersComponent,
+		ModulesComponent,
+		EditModuleComponent,
+		ActionsComponent,
+		EditActionComponent,
+		AccueilComponent,
 	],
 	imports: [
 		CommonModule,
@@ -65,15 +73,17 @@ import { UsersComponent } from './users/users.component';
 		Matr.MatPaginatorModule,
 		Matr.MatDatepickerModule,
 		Matr.MatDialogModule,
+		Matr.MatTreeModule,
 		
 	],
 	providers: [
 		{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-		SnotifyService
+		SnotifyService,
 	  ],
 	  entryComponents: [
 		EditComponent,
 		EditUsersComponent,
+		EditModuleComponent,
 	]
 })
 export class PagesModule {}

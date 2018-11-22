@@ -13,5 +13,6 @@ module.exports = (sequelize, type) => {
         user_cp: type.STRING,
         user_email: type.STRING,
         user_password: type.STRING,
+        user_etat: type.BOOLEAN,
       });
 }

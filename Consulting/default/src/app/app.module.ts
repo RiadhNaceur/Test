@@ -47,6 +47,7 @@ import { LayoutRefService } from './core/services/layout/layout-ref.service';
 import { SplashScreenService } from './core/services/splash-screen.service';
 import { DataTableService } from './core/services/datatable.service';
 //import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+//import {AccueilComponent} from './content/pages/accueil/accueil.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -70,6 +71,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		NgbModule.forRoot(),
 		TranslateModule.forRoot(),
 		MatProgressSpinnerModule,
+		//AccueilComponent,
 		//SnotifyModule,
 
 	],

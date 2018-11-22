@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 			this.authService.login(this.model).subscribe(response => {
 				console.log(typeof response)
 				if (typeof response !== 'undefined') {
-					this.router.navigate(['/']);
+					this.router.navigate(['/admin']);
 				} else {
 					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'error');
 				}

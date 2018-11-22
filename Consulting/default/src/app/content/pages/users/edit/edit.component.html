@@ -41,32 +41,20 @@
               </mat-hint>
             </mat-form-field>
           </div>
-        </div>
-        <div class="m-separator m-separator--dashed"></div>
-        <div class="form-group m-form__group row">
-          <div class="col-lg-4 m--margin-bottom-20-mobile">
-            <mat-form-field class="mat-form-field-fluid">
-              <input type="email" matInput placeholder="Enter Email" formControlName="user_email" />
-              <mat-error>Email is
-                <strong>required</strong>
-              </mat-error>
-              <mat-hint align="start">Please enter
-                <strong>Email</strong>
-              </mat-hint>
-            </mat-form-field>
-          </div>
           <div class="col-lg-4 m--margin-bottom-20-mobile">
               <mat-form-field class="mat-form-field-fluid">
-                <input  matInput placeholder="Enter Password"  [type]="hide ? 'password' : 'text'" formControlName="user_password" />
-                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-                <mat-error>Password is
-                  <strong>required</strong>
-                </mat-error>
-                <mat-hint align="start">Please enter
-                  <strong>Password</strong>
+                <mat-select placeholder="Type" formControlName="role_id">
+                  <mat-option value="8">Admin</mat-option>
+                  <mat-option value="10">Expert</mat-option>
+                </mat-select>
+                <mat-hint align="start">
+                  <strong>Account Type</strong>
                 </mat-hint>
               </mat-form-field>
             </div>
+        </div>
+        <div class="m-separator m-separator--dashed"></div>
+        <div class="form-group m-form__group row">
           <div class="col-lg-4 m--margin-bottom-20-mobile">
             <mat-form-field class="mat-form-field-fluid">
               <input matInput [matDatepicker]="picker" placeholder="Choose a Date of Birth" formControlName="user_date_nais" />
@@ -84,28 +72,44 @@
               </mat-error>
             </mat-form-field>
           </div>
+          <div class="col-lg-4 m--margin-bottom-20-mobile">
+              <mat-form-field class="mat-form-field-fluid">
+                <input type="number" matInput placeholder="Enter Code Postal" formControlName="user_cp" />
+                <mat-error>Code Postal
+                  <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
         </div>
         <div class="m-separator m-separator--dashed"></div>
         <div class="form-group m-form__group row">
             <div class="col-lg-4 m--margin-bottom-20-mobile">
                 <mat-form-field class="mat-form-field-fluid">
-                  <input type="number" matInput placeholder="Enter Code Postal" formControlName="user_cp" />
-                  <mat-error>Code Postal
+                  <input type="email" matInput placeholder="Enter Email" formControlName="user_email" />
+                  <mat-error>Email is
                     <strong>required</strong>
                   </mat-error>
+                  <mat-hint align="start">Please enter
+                    <strong>Email</strong>
+                  </mat-hint>
                 </mat-form-field>
               </div>
-         <div class="col-lg-4 m--margin-bottom-20-mobile">
-            <mat-form-field class="mat-form-field-fluid">
-              <mat-select placeholder="Type" formControlName="role_id">
-                <mat-option value="8">Admin</mat-option>
-                <mat-option value="10">Expert</mat-option>
-              </mat-select>
-              <mat-hint align="start">
-                <strong>Account Type</strong>
-              </mat-hint>
-            </mat-form-field>
-          </div>
+              <div class="col-lg-4 m--margin-bottom-20-mobile">
+                  <mat-form-field class="mat-form-field-fluid">
+                    <input  matInput placeholder="Enter Password"  [type]="hide ? 'password' : 'text'" formControlName="user_password" />
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-error>Password is
+                      <strong>required</strong>
+                    </mat-error>
+                    <mat-hint align="start">Please enter
+                      <strong>Password</strong>
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-4 m--margin-bottom-20-mobile">
+                    <mat-slide-toggle name="user_etat"  formControlName="user_etat">Etat</mat-slide-toggle>
+                </div>
+
         </div>
       </div>
       <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">

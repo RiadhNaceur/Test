@@ -25,7 +25,7 @@ import { UsersService } from './users.service';
 })
 export class UsersComponent implements OnInit {
 
-	displayedColumns = ['user_id', 'user_nom', 'lastName', 'email', 'dateCreation', 'actions'];
+	displayedColumns = ['user_id', 'user_nom', 'user_prenom', 'user_email', 'user_etat', 'user_dateCreation', 'actions'];
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 	// Filter fields
@@ -38,6 +38,7 @@ export class UsersComponent implements OnInit {
   public ELEMENT_DATA2;
 	public dataSource;
 	public loading;
+public filterTable = [];
 
 	constructor(
 		private customersService: CustomersService,
@@ -51,18 +52,53 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
 		this.loading = true;
     this.userService.getUsers().subscribe(response => {
-      console.log(response)
 			this.ELEMENT_DATA2 = response;
-     /* this.ELEMENT_DATA2.forEach(element => {
+      this.ELEMENT_DATA2.forEach(element => {
         
-        element.role_eetat = (element.role_etat) ? 'Activé' : 'Désactivé';
+        element.user_eetat = (element.user_etat) ? 'Activé' : 'Désactivé';
 
-      });*/
+      });
 			this.dataSource = new MatTableDataSource(this.ELEMENT_DATA2);
+			console.log('datasource:')
 			console.log(this.dataSource)
 			this.dataSource.sort = this.sort;
+			
+				this.dataSource.paginator = this.paginator;
+			  
 			this.loading = false;
-    });
+
+			/*this.dataSource.filterPredicate = (data: any, filter: any) => {
+				if (filter == "true")
+				return (data.user_etat);
+				return (!data.user_etat)
+			};*/
+	});
+
+	}
+
+
+
+	applyFilter(filterValue) {
+
+		var val = (filterValue.source) ? filterValue.value : filterValue.target.value;
+
+		this.dataSource.filter = val
+		/*if (filterValue.source) {
+			/*this.dataSource.filterPredicate = (data: any, filter: any) => {
+				if (filter == "true")
+				return (data.user_etat);
+				return (!data.user_etat)
+			   };
+			   this.filterTable.push(filterValue.value)
+			   this.dataSource.filter = filterValue.value;
+		}else{
+			filterValue.target.value = filterValue.target.value.trim(); // Remove whitespace
+			filterValue.target.value = filterValue.target.value.toLowerCase(); // Datasource defaults to lowercase matche
+			this.filterTable.push(filterValue.target.value)
+			this.dataSource.filter = filterValue.target.value;
+		}*/
+		//this.dataSource.filter = x;
+
   }
   editCustomer(customer) {
 		let saveMessageTranslateParam = 'ECOMMERCE.CUSTOMERS.EDIT.';
@@ -81,4 +117,65 @@ export class UsersComponent implements OnInit {
 		});
 	}
 
+	deleteCustomer(id) {
+		const _title: string = this.translate.instant('ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.TITLE');
+		const _description: string = this.translate.instant('ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.DESCRIPTION');
+		const _waitDesciption: string = this.translate.instant('ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.WAIT_DESCRIPTION');
+		const _deleteMessage = this.translate.instant('ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.MESSAGE');
+
+		const dialogRef = this.layoutUtilsService.deleteElement('Suppression', 'Voulez-vous supprimer cet utilisateur ?', 'Veuillez patienter');
+		dialogRef.afterClosed().subscribe(res => {
+			if (!res) {
+				return;
+			}
+
+			this.userService.deleteUser(id).subscribe(() => {
+				this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete);
+				//this.loadCustomersList();
+				this.ngOnInit();
+			});
+		});
+	}
+
+	loadCustomersList() {
+		this.selection.clear();
+		const queryParams = new QueryParamsModel(
+			this.filterConfiguration(true),
+			this.sort.direction,
+			this.sort.active,
+			this.paginator.pageIndex,
+			this.paginator.pageSize
+		);
+		//this.dataSource.loadCustomers(queryParams);
+		this.selection.clear();
+	}
+	filterConfiguration(isGeneralSearch: boolean = true): any {
+		const filter: any = {};
+		const searchText: string = this.searchInput.nativeElement.value;
+
+		if (this.filterStatus && this.filterStatus.length > 0) {
+			filter.status = +this.filterStatus;
+		}
+
+		if (this.filterType && this.filterType.length > 0) {
+			filter.type = +this.filterType;
+		}
+
+		filter.lastName = searchText;
+		if (!isGeneralSearch) {
+			return filter;
+		}
+
+		filter.firstName = searchText;
+		filter.email = searchText;
+		filter.ipAddress = searchText;
+		return filter;
+	}
 }
+export interface Element {
+	user_id: number;
+	user_nom: string;
+	user_prenom: string;
+	user_email: string;
+	user_etat: boolean;
+  }

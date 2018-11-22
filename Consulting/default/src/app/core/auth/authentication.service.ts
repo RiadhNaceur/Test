@@ -4,6 +4,7 @@ import { map, catchError, tap, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'ngx-auth';
+import { Router } from '@angular/router';
 
 import { TokenStorage } from './token-storage.service';
 import { UtilsService } from '../services/utils.service';
@@ -23,7 +24,8 @@ export class AuthenticationService implements AuthService {
 	constructor(
 		private http: HttpClient,
 		private tokenStorage: TokenStorage,
-		private util: UtilsService
+		private util: UtilsService,
+		private router: Router
 	) {
 		this.onCredentialUpdated$ = new Subject();
 	}
@@ -141,7 +143,8 @@ export class AuthenticationService implements AuthService {
 	public logout(refresh?: boolean): void {
 		this.tokenStorage.clear();
 		if (refresh) {
-			location.reload(true);
+			//location.reload(true);
+			this.router.navigate(['/']);
 		}
 	}
 

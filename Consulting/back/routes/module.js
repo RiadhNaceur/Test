@@ -3,11 +3,11 @@ module.exports = function (app) {
     const models  = require('../sequelize')
 
     app.delete('/module/delete/:id', (req,res,nex) => {
-
+        console.log(req.params.id)
         models.Module.destroy({where: {module_id: req.params.id}}).then(function (module){
-            res.status(200).json({msg: module});     
+            res.status(200).json(module);     
         }, function(err){
-            res.status(500).json({errmsg: err});
+            res.status(500).json(err);
         });
     
     })
@@ -27,11 +27,13 @@ module.exports = function (app) {
     app.put('/module/update/:id', (req,res,nex) => {
 
         models.Module.findById(req.params.id).then(function (module){
+            const actions = req.body.actions;
             module.updateAttributes({
                 module_nom: req.body.module_nom,
                 module_etat: req.body.module_etat
                 }).then(function (UpdatedModule){
-                    //UpdatedRole.setActions(actions);
+                    if (actions)
+                    UpdatedModule.setActions(actions);
                     res.status(200).json({msg: UpdatedModule});
                 },function(err){
                     res.status(500).json({errmsg: err});

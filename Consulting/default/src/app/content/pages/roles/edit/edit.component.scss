@@ -5,3 +5,18 @@
 .m-form .m-form__actions {
     padding: 30px;
 }
+
+.check-module {
+    margin: 20px 0;
+    transition: all ease 0.5s;
+    padding: 2px;
+}
+.check-action {
+    margin-left: 29px;
+    transition: all ease 0.5s;
+}
+.check-module > div {
+    background: #ececec;
+    padding: 5px;
+    border-radius: 2px;
+}

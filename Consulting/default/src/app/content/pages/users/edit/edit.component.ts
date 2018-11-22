@@ -48,6 +48,7 @@ export class EditUsersComponent implements OnInit {
         user_date_nais: ['', Validators.nullValidator],
         user_adresse: ['', Validators.required],
         user_cp: ['', Validators.required],
+        user_etat: ['', Validators.required],
         role_id: ['', Validators.required]
       });
 
@@ -115,6 +116,11 @@ export class EditUsersComponent implements OnInit {
         data=>{
           console.log(data);
           this.snotifyService.async('Veuillez patientez', successAction);
+          setTimeout(() => {
+            this.dialogRef.close()
+            console.log('bruuuuh')
+          }, 3000);
+          
           this.updated = true;
          // this.dialogRef.close(3000);
         },
@@ -128,6 +134,7 @@ export class EditUsersComponent implements OnInit {
       data=>{
         console.log(data);
         this.snotifyService.async('Veuillez patientez', successAction);
+
         
       },
       error=>{
@@ -179,7 +186,7 @@ const successAction = Observable.create(observer => {
         timeout: 1000,
         showProgressBar: true
       }
-    });
+    })
     observer.complete();
   }, 1000);
 });

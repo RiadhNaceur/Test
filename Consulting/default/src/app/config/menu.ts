@@ -22,7 +22,7 @@ export class MenuConfig implements ConfigModel {
 							items: [
 								{
 									title: 'Create New Post',
-									page: '/header/actions',
+									page: 'header/actions',
 									icon: 'flaticon-file',
 									translate: 'MENU.CREATE_POST',
 									aside: {
@@ -42,7 +42,7 @@ export class MenuConfig implements ConfigModel {
 												submenu: [
 													{
 														title: 'Create New Post',
-														page: '/header/actions',
+														page: 'header/actions',
 													},
 													{
 														title: 'Timesheet',
@@ -113,7 +113,7 @@ export class MenuConfig implements ConfigModel {
 								},
 								{
 									title: 'Customer Feedbacks',
-									page: '/#',
+									page: '#',
 									icon: 'flaticon-chat-1',
 									submenu: {
 										type: 'classic',
@@ -346,17 +346,17 @@ export class MenuConfig implements ConfigModel {
 										items: [
 											{
 												title: 'Customers',
-												page: '/ecommerce/customers',
+												page: 'ecommerce/customers',
 												icon: 'flaticon-users',
 											},
 											{
 												title: 'Orders',
-												page: '/ecommerce/orders',
+												page: 'ecommerce/orders',
 												icon: 'flaticon-interface-1',
 											},
 											{
 												title: 'Products',
-												page: '/ecommerce/products',
+												page: 'ecommerce/products',
 												icon: 'flaticon-list-1',
 											}
 										]
@@ -364,7 +364,7 @@ export class MenuConfig implements ConfigModel {
 								},
 								{
 									title: 'Audience',
-									page: '/crud/datatable_v1',
+									page: 'crud/datatable_v1',
 									icon: 'flaticon-computer',
 									submenu: {
 										type: 'classic',
@@ -460,7 +460,7 @@ export class MenuConfig implements ConfigModel {
 						desc: 'Some description goes here',
 						root: true,
 						icon: 'flaticon-line-graph',
-						page: '/',
+						page: '/admin',
 						badge: {type: 'm-badge--danger', value: '2'},
 						translate: 'MENU.DASHBOARD'
 					},
@@ -477,35 +477,35 @@ export class MenuConfig implements ConfigModel {
 								submenu: [
 									{
 										title: 'Auto Complete',
-										page: '/material/form-controls/autocomplete'
+										page: 'material/form-controls/autocomplete'
 									},
 									{
 										title: 'Checkbox',
-										page: '/material/form-controls/checkbox'
+										page: 'material/form-controls/checkbox'
 									},
 									{
 										title: 'Radio Button',
-										page: '/material/form-controls/radiobutton'
+										page: 'material/form-controls/radiobutton'
 									},
 									{
 										title: 'Datepicker',
-										page: '/material/form-controls/datepicker'
+										page: 'material/form-controls/datepicker'
 									},
 									{
 										title: 'Form Field',
-										page: '/material/form-controls/formfield'
+										page: 'material/form-controls/formfield'
 									},
 									{
 										title: 'Input',
-										page: '/material/form-controls/input'
+										page: 'material/form-controls/input'
 									},
 									{
 										title: 'Select',
-										page: '/material/form-controls/select'
+										page: 'material/form-controls/select'
 									},
 									{
 										title: 'Slider',
-										page: '/material/form-controls/slider'
+										page: 'material/form-controls/slider'
 									},
 									{
 										title: 'Slider Toggle',
@@ -520,15 +520,15 @@ export class MenuConfig implements ConfigModel {
 								submenu: [
 									{
 										title: 'Menu',
-										page: '/material/navigation/menu'
+										page: 'material/navigation/menu'
 									},
 									{
 										title: 'Sidenav',
-										page: '/material/navigation/sidenav'
+										page: 'material/navigation/sidenav'
 									},
 									{
 										title: 'Toolbar',
-										page: '/material/navigation/toolbar'
+										page: 'material/navigation/toolbar'
 									}
 								]
 							},
@@ -538,39 +538,39 @@ export class MenuConfig implements ConfigModel {
 								submenu: [
 									{
 										title: 'Card',
-										page: '/material/layout/card'
+										page: 'material/layout/card'
 									},
 									{
 										title: 'Divider',
-										page: '/material/layout/divider'
+										page: 'material/layout/divider'
 									},
 									{
 										title: 'Expansion panel',
-										page: '/material/layout/expansion-panel'
+										page: 'material/layout/expansion-panel'
 									},
 									{
 										title: 'Grid list',
-										page: '/material/layout/grid-list'
+										page: 'material/layout/grid-list'
 									},
 									{
 										title: 'List',
-										page: '/material/layout/list'
+										page: 'material/layout/list'
 									},
 									{
 										title: 'Tabs',
-										page: '/material/layout/tabs'
+										page: 'material/layout/tabs'
 									},
 									{
 										title: 'Stepper',
-										page: '/material/layout/stepper'
+										page: 'material/layout/stepper'
 									},
 									{
 										title: 'Default Forms',
-										page: '/material/layout/default-forms'
+										page: 'material/layout/default-forms'
 									},
 									{
 										title: 'Tree',
-										page: '/material/layout/tree'
+										page: 'material/layout/tree'
 									}
 								]
 							},
@@ -642,15 +642,15 @@ export class MenuConfig implements ConfigModel {
 								submenu: [
 									{
 										title: 'Paginator',
-										page: '/material/data-table/paginator'
+										page: 'material/data-table/paginator'
 									},
 									{
 										title: 'Sort header',
-										page: '/material/data-table/sort-header'
+										page: 'material/data-table/sort-header'
 									},
 									{
 										title: 'Table',
-										page: '/material/data-table/table'
+										page: 'material/data-table/table'
 									}
 								]
 							}
@@ -661,14 +661,20 @@ export class MenuConfig implements ConfigModel {
 						root: true,
 						bullet: 'dot',
 						icon: 'flaticon-user-settings',
-						page: '/roles'
+						page: 'roles'
+					},{
+						title: 'Modules',
+						root: true,
+						bullet: 'dot',
+						icon: 'flaticon-user-settings',
+						page: 'modules'
 					},
 					{
 						title: 'Utilisateurs',
 						root: true,
 						bullet: 'dot',
 						icon: 'flaticon-users',
-						page: '/users'
+						page: 'users'
 					},
 					{
 						title: 'Ng-Bootstrap',
@@ -678,67 +684,67 @@ export class MenuConfig implements ConfigModel {
 						submenu: [
 							{
 								title: 'Accordion',
-								page: '/ngbootstrap/accordion'
+								page: 'ngbootstrap/accordion'
 							},
 							{
 								title: 'Alert',
-								page: '/ngbootstrap/alert'
+								page: 'ngbootstrap/alert'
 							},
 							{
 								title: 'Buttons',
-								page: '/ngbootstrap/buttons'
+								page: 'ngbootstrap/buttons'
 							},
 							{
 								title: 'Carousel',
-								page: '/ngbootstrap/carousel'
+								page: 'ngbootstrap/carousel'
 							},
 							{
 								title: 'Collapse',
-								page: '/ngbootstrap/collapse'
+								page: 'ngbootstrap/collapse'
 							},
 							{
 								title: 'Datepicker',
-								page: '/ngbootstrap/datepicker'
+								page: 'ngbootstrap/datepicker'
 							},
 							{
 								title: 'Dropdown',
-								page: '/ngbootstrap/dropdown'
+								page: 'ngbootstrap/dropdown'
 							},
 							{
 								title: 'Modal',
-								page: '/ngbootstrap/modal'
+								page: 'ngbootstrap/modal'
 							},
 							{
 								title: 'Pagination',
-								page: '/ngbootstrap/pagination'
+								page: 'ngbootstrap/pagination'
 							},
 							{
 								title: 'Popover',
-								page: '/ngbootstrap/popover'
+								page: 'ngbootstrap/popover'
 							},
 							{
 								title: 'Progressbar',
-								page: '/ngbootstrap/progressbar'
+								page: 'ngbootstrap/progressbar'
 							},
 							{
 								title: 'Rating',
-								page: '/ngbootstrap/rating'
+								page: 'ngbootstrap/rating'
 							},
 							{
 								title: 'Tabs',
-								page: '/ngbootstrap/tabs'
+								page: 'ngbootstrap/tabs'
 							},
 							{
 								title: 'Timepicker',
-								page: '/ngbootstrap/timepicker'
+								page: 'ngbootstrap/timepicker'
 							},
 							{
 								title: 'Tooltips',
-								page: '/ngbootstrap/tooltip'
+								page: 'ngbootstrap/tooltip'
 							},
 							{
 								title: 'Typehead',
-								page: '/ngbootstrap/typehead'
+								page: 'ngbootstrap/typehead'
 							}
 						]
 					},
@@ -750,15 +756,15 @@ export class MenuConfig implements ConfigModel {
 						submenu: [
 							{
 								title: 'Accordion',
-								page: '/metronic/accordion'
+								page: 'metronic/accordion'
 							},
 							{
 								title: 'Sticky Form Actions',
-								page: '/metronic/sticky-form-actions'
+								page: 'metronic/sticky-form-actions'
 							},
 							{
 								title: 'Forms',
-								page: '/metronic/forms'
+								page: 'metronic/forms'
 							}
 						]
 					},
@@ -771,15 +777,15 @@ export class MenuConfig implements ConfigModel {
 						submenu: [
 							{
 								title: 'Customers',
-								page: '/ecommerce/customers'
+								page: 'ecommerce/customers'
 							},
 							{
 								title: 'Orders',
-								page: '/ecommerce/orders'
+								page: 'ecommerce/orders'
 							},
 							{
 								title: 'Products',
-								page: '/ecommerce/products'
+								page: 'ecommerce/products'
 							},
 						]
 					},
@@ -788,14 +794,14 @@ export class MenuConfig implements ConfigModel {
 					// 	root: true,
 					// 	bullet: 'dot',
 					// 	icon: 'flaticon-user',
-					// 	page: '/user-management'
+					// 	page: 'user-management'
 					// },
 					// {
 					// 	title: 'Audit Log',
 					// 	root: true,
 					// 	bullet: 'dot',
 					// 	icon: 'flaticon-interface-5',
-					// 	page: '/audit-log'
+					// 	page: 'audit-log'
 					// },
 					{section: 'Pages'},
 					{
@@ -806,7 +812,7 @@ export class MenuConfig implements ConfigModel {
 						submenu: [
 							{
 								title: 'Profile',
-								page: '/profile'
+								page: 'profile'
 							},
 						]
 					},
@@ -818,27 +824,27 @@ export class MenuConfig implements ConfigModel {
 						submenu: [
 							{
 								title: 'Error-1',
-								page: '/error/1'
+								page: 'error/1'
 							},
 							{
 								title: 'Error-2',
-								page: '/error/2'
+								page: 'error/2'
 							},
 							{
 								title: 'Error-3',
-								page: '/error/3'
+								page: 'error/3'
 							},
 							{
 								title: 'Error-4',
-								page: '/error/4'
+								page: 'error/4'
 							},
 							{
 								title: 'Error-5',
-								page: '/error/5'
+								page: 'error/5'
 							},
 							{
 								title: 'Error-6',
-								page: '/error/6'
+								page: 'error/6'
 							},
 						]
 					},
@@ -847,7 +853,7 @@ export class MenuConfig implements ConfigModel {
 						title: 'Layout Builder',
 						root: true,
 						icon: 'flaticon-settings',
-						page: '/builder'
+						page: 'builder'
 					}
 				]
 			}
