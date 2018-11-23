@@ -1,3 +1,63 @@
-<p>
-  header-front works!
-</p>
+<!-- BEGIN: Header -->
+<header mHeader #mHeader class="m-grid__item m-header" [attr.m-minimize-offset]="headerService.attrMinimizeOffset" [attr.m-minimize-mobile-offset]="headerService.attrMinimizeMobileOffset">
+	<div [ngClass]="headerService.containerClass">
+		<div class="m-stack m-stack--ver m-stack--desktop">
+			<!--<div class="m-stack m-stack--ver m-stack--general m-brand.m-brand--skin-dark">
+				<div class="m-stack__item m-stack__item--middle m-brand__logo">
+					<a routerLink="/" class="m-brand__logo-wrapper">
+						<img alt="" src="./assets/demo/default/media/img/logo/logo_default_dark.png" />
+					</a>
+				</div>
+			</div>-->
+			<div class="m-stack__item m-brand m-brand--skin-dark">
+				<div class="m-stack m-stack--ver m-stack--general">
+					<div class="m-stack__item m-stack__item--middle m-brand__logo">
+						<a class="m-brand__logo-wrapper" routerlink="/" href="/">
+							<img alt="" src="./assets/demo/default/media/img/logo/logo_default_dark.png"></a>
+					</div>
+				</div>
+			</div>
+			<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
+				<ng-container>
+					<!--<m-menu-horizontal></m-menu-horizontal>-->
+					<div class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark ng-star-inserted">
+						<ul class="m-menu__nav m-menu__nav--submenu-arrow"> 
+							<li class="m-menu__item m-menu__item--submenu m-menu__item--rel ng-star-inserted">
+								<a href="" class="m-menu__link m-menu__toggle ng-star-inserted">
+									<!--<i class="m-menu__link-icon flaticon-add ng-star-inserted"></i>-->
+									<span class="m-menu__link-text ng-star-inserted">Nos Specialités</span>
+								</a>	
+							</li>
+							<li class="m-menu__item m-menu__item--submenu m-menu__item--rel ng-star-inserted">
+									<a href="" class="m-menu__link m-menu__toggle ng-star-inserted">
+										
+										<span class="m-menu__link-text ng-star-inserted">Qui-Sommes nous</span>
+									</a>	
+							</li>
+							<li class="m-menu__item m-menu__item--submenu m-menu__item--rel ng-star-inserted">
+									<a href="" class="m-menu__link m-menu__toggle ng-star-inserted">
+										
+										<span class="m-menu__link-text ng-star-inserted">Contact</span>
+									</a>	
+							</li>
+						</ul>
+						
+					</div>
+					<div class="righting m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark ng-star-inserted">
+							<ul class="m-menu__nav m-menu__nav--submenu-arrow"> 
+								<li class="m-menu__item m-menu__item--submenu m-menu__item--rel ng-star-inserted">
+									<a href="" class="m-menu__link m-menu__toggle ng-star-inserted">
+										<i class="m-menu__link-icon flaticon-users ng-star-inserted"></i>
+										<span class="m-menu__link-text ng-star-inserted">Connexion / Inscription</span>
+									</a>	
+								</li>
+							</ul>
+							
+					</div>
+
+				</ng-container>
+				<!--<m-topbar></m-topbar>-->
+			</div>
+		</div>
+	</div>
+</header>

@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { FormsModule } from '@angular/forms';
 import { HeaderFrontComponent } from './header-front/header-front.component';
+import { FooterFrontComponent } from './footer-front/footer-front.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	// suppressScrollX: true
@@ -66,10 +67,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 		HeaderFrontComponent,
 
+		FooterFrontComponent,
+
 	],
 	exports: [
 		HeaderComponent,
+		HeaderFrontComponent,
 		FooterComponent,
+		FooterFrontComponent,
 		SubheaderComponent,
 		BrandComponent,
 
